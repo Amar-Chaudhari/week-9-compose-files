@@ -1,3 +1,6 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "-7:00";
+
 CREATE DATABASE IF NOT EXISTS cloudtech; USE cloudtech;
 
 CREATE TABLE `labs` (

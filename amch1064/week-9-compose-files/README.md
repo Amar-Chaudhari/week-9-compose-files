@@ -12,20 +12,24 @@ This project uses `docker-compose` to spin up containers. The script will start 
 The database server uses a folder on the local disk to storage all mysql related files. Hence, even after the container is destroyed and re-created all the mysql files are persistent. 
 
 The following directory is used to store the files:
-    `./dbvolume`
+    ./dbvolume
 
 #### Build the web server container
-    `docker-compose build`
+    docker-compose build
     
 
 #### Start all containers
-    `docker-compose up -d`
+    docker-compose up -d
+    
+
+#### Stop all containers
+    docker-compose down
     
 
 #### Verify the working
 
 Open the following url in your browswer
 
-    `http://0.0.0.0:5000/cloudtech.php`
+    http://0.0.0.0:5000/cloudtech.php
     
 
