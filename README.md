@@ -1,20 +1,31 @@
-# week-9-compose-files
-This repository is for submission of Week-9's Docker Compose assignment
+# Week 9 Home Work
+This repository contains files needed replicate a simple version of our AWS Web Server Assignment, but instead of using two AWS Instances (Web Server and DB Server) we will use two containers.
 
 ## Instructions
-Fork this repo into your own Github 
-Clone from your repo to your local machine
 
-    `git clone https://github.com/<your-github-id>/week-9-compose-files`
+This project uses `docker-compose` to spin up containers. The script will start two containers:
+1. Web Server - Apache + PHP
+2. Database Server - Maraidb
+
+### Persistent Storage
+
+The database server uses a folder on the local disk to storage all mysql related files. Hence, even after the container is destroyed and re-created all the mysql files are persistent. 
+
+The following directory is used to store the files:
+    `./dbvolume`
+
+#### Build the web server container
+    `docker-compose build`
     
-Change working directory
 
-    `cd week-9-compose-files`
+#### Start all containers
+    `docker-compose up -d`
     
-Create a directory for YOUR submission, use your student ID just like you did on the last assignment
 
-    `mkdir -p jogr1931/week-9-compose-files`
+#### Verify the working
+
+Open the following url in your browswer
+
+    `http://0.0.0.0:5000/cloudtech.php`
     
-All of your work should go inside this directory, remember, you'll need your db init files, Dockerfiles (assuming you create a custom image) and of course your compose file.  Please include a README file with any special information that I'll need in order to run your assignment and access the web page.
 
-Push your changes to your Github as you go along, and when you're ready; create a Pull Request back to the Course Repo that you forked from.

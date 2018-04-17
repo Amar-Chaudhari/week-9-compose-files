@@ -1,0 +1,38 @@
+version: '2'
+services:
+  web:
+    build: .
+    hostname: web_server
+    ports:
+     - "5000:80"
+    volumes:
+      - ./html:/var/www/html
+    networks:
+      vpctest:
+        ipv4_address: 10.10.1.2
+
+  database:
+    image: mariadb
+    ports:
+      - "3306:3306"
+    restart: always
+    hostname: db_server
+    environment:
+      MYSQL_ROOT_PASSWORD: Super123
+      MYSQL_DATABASE: cloudtech
+      MYSQL_USER: clouduser
+      MYSQL_PASSWORD: Super123
+    volumes:
+      - ./dump:/docker-entrypoint-initdb.d
+      - ./dbvolume:/var/lib/mysql
+    networks:
+      vpctest:
+        ipv4_address: 10.10.2.2
+
+networks:
+  vpctest:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.10.0.0/16
+         gateway: 10.10.0.1
